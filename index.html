@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Health Marketing Group is a marketing agency for independent physician practices, dental groups, and physical therapy clinics. Get a free marketing audit.">
+<title>The Health Marketing Group</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --paper-50:#EDEFEA;
+    --paper-100:#E2E5DD;
+    --surface:#FFFFFF;
+    --ink-900:#11202E;
+    --ink-700:#415360;
+    --line-300:rgba(17,32,46,0.14);
+    --line-200:rgba(17,32,46,0.08);
+    --accent-600:#D64530;
+    --accent-700:#AF3821;
+    --accent-100:#F6DCD3;
+    --teal-600:#1F6F6B;
+    --teal-100:#DCEAE8;
+    --on-accent:#FBF4F1;
+    --shadow-soft:0 1px 2px rgba(17,32,46,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper-50:#0B1416;
+      --paper-100:#121D20;
+      --surface:#101A1D;
+      --ink-900:#EDEFEA;
+      --ink-700:#A9B7B3;
+      --line-300:rgba(237,239,234,0.16);
+      --line-200:rgba(237,239,234,0.09);
+      --accent-600:#E8573E;
+      --accent-700:#F3775F;
+      --accent-100:rgba(230,87,62,0.18);
+      --teal-600:#4AA29D;
+      --teal-100:rgba(74,162,157,0.18);
+      --on-accent:#130906;
+      --shadow-soft:0 1px 2px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper-50:#0B1416;
+    --paper-100:#121D20;
+    --surface:#101A1D;
+    --ink-900:#EDEFEA;
+    --ink-700:#A9B7B3;
+    --line-300:rgba(237,239,234,0.16);
+    --line-200:rgba(237,239,234,0.09);
+    --accent-600:#E8573E;
+    --accent-700:#F3775F;
+    --accent-100:rgba(230,87,62,0.18);
+    --teal-600:#4AA29D;
+    --teal-100:rgba(74,162,157,0.18);
+    --on-accent:#130906;
+    --shadow-soft:0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper-50);
+    color:var(--ink-900);
+    font-family:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Big Shoulders Display', system-ui, sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink-900);
+  }
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums;}
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  section{scroll-margin-top:84px;}
+
+  .skip-link{position:absolute; left:-999px; top:0; background:var(--accent-600); color:var(--on-accent); padding:10px 16px; z-index:200;}
+  .skip-link:focus{left:12px; top:12px;}
+
+  :focus-visible{outline:2.5px solid var(--accent-600); outline-offset:2px; border-radius:2px;}
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:100;
+    background:color-mix(in srgb, var(--paper-50) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-200);
+    transition:box-shadow .25s ease, border-color .25s ease;
+  }
+  .site-header.is-scrolled{box-shadow:var(--shadow-soft); border-color:var(--line-300);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; height:72px; gap:20px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Big Shoulders Display'; font-weight:800; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em; white-space:nowrap;}
+  .brand-mark{width:30px; height:30px; flex-shrink:0;}
+  .brand small{display:block; font-family:'IBM Plex Mono'; font-weight:500; font-size:0.56rem; letter-spacing:0.14em; color:var(--accent-600); text-transform:uppercase; margin-top:1px;}
+  nav.primary-nav{display:flex; align-items:center; gap:28px;}
+  nav.primary-nav a{font-size:0.86rem; font-weight:600; color:var(--ink-700); letter-spacing:0.01em; transition:color .15s;}
+  nav.primary-nav a:hover{color:var(--accent-600);}
+  .header-actions{display:flex; align-items:center; gap:14px;}
+  .menu-toggle{display:none; background:none; border:1.5px solid var(--line-300); border-radius:8px; width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer; color:var(--ink-900);}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'IBM Plex Sans'; font-weight:700; font-size:0.86rem; letter-spacing:0.01em;
+    padding:12px 22px; border-radius:7px; border:1.5px solid transparent; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-accent{background:var(--accent-600); color:var(--on-accent);}
+  .btn-accent:hover{background:var(--accent-700); box-shadow:0 6px 16px -6px var(--accent-600);}
+  .btn-ghost{background:transparent; color:var(--ink-900); border-color:var(--line-300);}
+  .btn-ghost:hover{border-color:var(--ink-900);}
+  .btn-sm{padding:9px 16px; font-size:0.78rem;}
+  .btn-block{width:100%;}
+
+  /* ---------- trial promo ---------- */
+  .trial-band{padding:28px 0; background:var(--accent-100); border-bottom:1px solid var(--line-300);}
+  .trial-grid{display:flex; justify-content:space-between; align-items:center; gap:28px; flex-wrap:wrap;}
+  .trial-copy h2{font-size:clamp(1.5rem,1vw + 1.3rem,2rem); line-height:1.05; color:var(--ink-900);}
+  .trial-copy p{margin-top:8px; font-size:0.95rem; color:var(--ink-700); max-width:60ch;}
+  .trial-offer{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+  .trial-price{font-family:'IBM Plex Mono'; font-size:0.8rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--accent-700); background:var(--surface); border:1px solid var(--line-300); padding:8px 12px; border-radius:7px;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:68px 0 48px; position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono'; font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--accent-600); background:var(--accent-100); padding:6px 12px; border-radius:100px; margin-bottom:22px;
+  }
+  .eyebrow::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--accent-600); flex-shrink:0;}
+  h1.hero-head{font-size:clamp(2.6rem, 2vw + 2.6rem, 4.4rem); line-height:0.98;}
+  h1.hero-head .accent{color:var(--accent-600);}
+  .hero-sub{margin-top:22px; font-size:1.12rem; line-height:1.6; color:var(--ink-700); max-width:46ch;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:32px;}
+  .hero-note{margin-top:18px; font-size:0.8rem; color:var(--ink-700); font-family:'IBM Plex Mono';}
+
+  .vitals-card{
+    background:var(--surface); border:1px solid var(--line-300); border-radius:14px; padding:26px;
+    box-shadow:0 20px 50px -30px rgba(17,32,46,0.35);
+  }
+  .vitals-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+  .vitals-head span{font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-700);}
+  .vitals-head strong{font-family:'IBM Plex Mono'; font-size:0.78rem; color:var(--teal-600); display:flex; align-items:center; gap:6px;}
+  .vitals-head strong::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--teal-600); animation:pulse-dot 1.8s ease-in-out infinite;}
+  @keyframes pulse-dot{0%,100%{opacity:1;} 50%{opacity:.35;}}
+  .ekg-wrap{border-top:1px solid var(--line-200); border-bottom:1px solid var(--line-200); padding:14px 0; margin:14px 0;}
+  .ekg-path{stroke:var(--teal-600); stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:4 2000; animation:draw-ekg 4.5s linear infinite;}
+  @keyframes draw-ekg{to{stroke-dashoffset:-2000;}}
+  .vitals-metrics{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;}
+  .vitals-metric strong{display:block; font-family:'IBM Plex Mono'; font-size:1.5rem; color:var(--ink-900);}
+  .vitals-metric span{font-size:0.74rem; color:var(--ink-700);}
+  .vitals-foot{margin-top:18px; padding-top:14px; border-top:1px solid var(--line-200); font-size:0.72rem; color:var(--ink-700); font-family:'IBM Plex Mono';}
+
+  .trust-strip{margin-top:56px; padding-top:28px; border-top:1px solid var(--line-200);}
+  .trust-strip p{font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-700); font-family:'IBM Plex Mono'; margin-bottom:16px;}
+  .trust-row{display:flex; flex-wrap:wrap; gap:14px 30px;}
+  .trust-row span{font-family:'Big Shoulders Display'; font-weight:700; font-size:0.95rem; text-transform:uppercase; color:var(--ink-700); letter-spacing:0.01em; opacity:0.8;}
+
+  /* ---------- stats band ---------- */
+  .stats-band{background:var(--ink-900); padding:46px 0 40px; margin-top:64px;}
+  :root[data-theme="dark"] .stats-band, html:not([data-theme="light"]) .stats-band{background:var(--surface); border-top:1px solid var(--line-300); border-bottom:1px solid var(--line-300);}
+  .stats-band .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
+  .stat-tile strong{display:block; font-family:'IBM Plex Mono'; font-weight:600; font-size:clamp(1.8rem,2.4vw,2.6rem); color:var(--paper-50);}
+  html:not([data-theme="light"]) .stat-tile strong, :root[data-theme="dark"] .stat-tile strong{color:var(--ink-900);}
+  .stat-tile span{display:block; margin-top:6px; font-size:0.84rem; color:rgba(237,239,234,0.72);}
+  html:not([data-theme="light"]) .stat-tile span, :root[data-theme="dark"] .stat-tile span{color:var(--ink-700);}
+  /* ---------- section heads ---------- */
+  .section{padding:92px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(2rem, 1.4vw + 1.7rem, 2.8rem); line-height:1.04;}
+  .section-head p{margin-top:16px; font-size:1.03rem; color:var(--ink-700); max-width:52ch;}
+  .section-alt{background:var(--paper-100);}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;}
+  .about-body{display:flex; flex-direction:column; gap:18px;}
+  .about-body p{font-size:1.03rem; color:var(--ink-700); line-height:1.65; max-width:58ch;}
+  @media (max-width:980px){ .about-grid{grid-template-columns:1fr; gap:24px;} }
+
+  /* ---------- services ---------- */
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-300); border:1px solid var(--line-300); border-radius:14px; overflow:hidden;}
+  .service-card{background:var(--surface); padding:30px 26px; display:flex; flex-direction:column; gap:14px;}
+  .service-icon{width:38px; height:38px; color:var(--accent-600);}
+  .service-card h3{font-size:1.08rem; text-transform:none; letter-spacing:0; font-family:'IBM Plex Sans'; font-weight:700;}
+  .service-card p{font-size:0.92rem; color:var(--ink-700); line-height:1.6;}
+
+  /* ---------- process ---------- */
+  .process-row{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;}
+  .process-step{position:relative; padding-right:24px;}
+  .process-step:not(:last-child)::after{content:''; position:absolute; top:22px; right:0; width:24px; height:1.5px; background:var(--line-300);}
+  .process-num{font-family:'IBM Plex Mono'; font-size:0.78rem; color:var(--accent-600); font-weight:600;}
+  .process-step h3{margin-top:14px; font-size:1.2rem;}
+  .process-step p{margin-top:10px; font-size:0.88rem; color:var(--ink-700); max-width:28ch;}
+
+  /* ---------- credibility ---------- */
+  .credibility-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line-300); border:1px solid var(--line-300); border-radius:14px; overflow:hidden;}
+  .founder-card{display:flex; gap:22px; align-items:flex-start; background:var(--surface); border:1px solid var(--line-300); border-radius:14px; padding:28px; margin-top:22px;}
+  .founder-avatar{width:56px; height:56px; border-radius:50%; background:var(--accent-100); color:var(--accent-600); display:flex; align-items:center; justify-content:center; font-family:'Big Shoulders Display'; font-weight:800; font-size:1.2rem; flex-shrink:0;}
+  .founder-info h3{font-size:1.1rem; text-transform:none; letter-spacing:0; font-family:'IBM Plex Sans'; font-weight:700;}
+  .founder-info p{margin-top:10px; font-size:0.92rem; color:var(--ink-700); line-height:1.6; max-width:62ch;}
+  .cohort-banner{margin-top:22px; display:flex; justify-content:space-between; align-items:center; gap:24px; background:var(--accent-100); border:1px solid var(--line-300); border-radius:14px; padding:26px 28px;}
+  .cohort-banner h3{font-size:1.05rem; text-transform:none; letter-spacing:0; font-family:'IBM Plex Sans'; font-weight:700; color:var(--ink-900);}
+  .cohort-banner p{margin-top:8px; font-size:0.9rem; color:var(--ink-700); max-width:52ch;}
+  .cohort-banner .btn{flex-shrink:0;}
+  @media (max-width:720px){
+    .credibility-grid{grid-template-columns:1fr;}
+    .cohort-banner{flex-direction:column; align-items:flex-start;}
+    .cohort-banner .btn{width:100%;}
+    .founder-card{flex-direction:column;}
+  }
+
+  /* ---------- pricing ---------- */
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+  .price-card{background:var(--surface); border:1px solid var(--line-300); border-radius:14px; padding:30px; display:flex; flex-direction:column; gap:20px;}
+  .price-card.is-featured{border-color:var(--accent-600); box-shadow:0 20px 50px -32px var(--accent-600);}
+  .price-top span.tier{font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent-600);}
+  .price-top h3{margin-top:8px; font-size:1.3rem;}
+  .price-amount{font-family:'IBM Plex Mono'; font-size:1.9rem; color:var(--ink-900); margin-top:4px;}
+  .price-amount small{font-size:0.8rem; color:var(--ink-700); font-weight:500;}
+  .price-desc{font-size:0.88rem; color:var(--ink-700);}
+  .price-feats{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .price-feats li{display:flex; gap:10px; font-size:0.88rem; color:var(--ink-900); align-items:flex-start;}
+  .price-feats li svg{width:16px; height:16px; color:var(--teal-600); flex-shrink:0; margin-top:3px;}
+
+  /* ---------- faq ---------- */
+  .faq-list{display:flex; flex-direction:column; border-top:1px solid var(--line-300);}
+  .faq-item{border-bottom:1px solid var(--line-300);}
+  .faq-q{width:100%; display:flex; justify-content:space-between; align-items:center; gap:16px; background:none; border:none; padding:22px 4px; text-align:left; font-family:'IBM Plex Sans'; font-size:1rem; font-weight:600; color:var(--ink-900); cursor:pointer;}
+  .faq-q .plus{font-family:'IBM Plex Mono'; font-size:1.2rem; color:var(--accent-600); transition:transform .2s ease; flex-shrink:0;}
+  .faq-item[data-open="true"] .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{padding:0 4px 22px; font-size:0.92rem; color:var(--ink-700); max-width:62ch; line-height:1.6;}
+
+  /* ---------- cta band / form ---------- */
+  .cta-band{background:var(--ink-900); padding:96px 0; color:var(--paper-50);}
+  html:not([data-theme="light"]) .cta-band, :root[data-theme="dark"] .cta-band{background:var(--surface); border-top:1px solid var(--line-300); color:var(--ink-900);}
+  .cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  .cta-grid h2{color:var(--paper-50); font-size:clamp(2rem,1.6vw + 1.7rem,2.9rem);}
+  html:not([data-theme="light"]) .cta-grid h2, :root[data-theme="dark"] .cta-grid h2{color:var(--ink-900);}
+  .cta-grid > div:first-child p{margin-top:18px; color:rgba(237,239,234,0.72); font-size:1.03rem; max-width:40ch;}
+  html:not([data-theme="light"]) .cta-grid > div:first-child p, :root[data-theme="dark"] .cta-grid > div:first-child p{color:var(--ink-700);}
+  .cta-bullets{margin-top:28px; display:flex; flex-direction:column; gap:12px;}
+  .cta-bullets div{display:flex; gap:10px; align-items:flex-start; font-size:0.92rem; color:rgba(237,239,234,0.85);}
+  html:not([data-theme="light"]) .cta-bullets div, :root[data-theme="dark"] .cta-bullets div{color:var(--ink-700);}
+  .cta-bullets svg{width:16px; height:16px; color:var(--teal-600); flex-shrink:0; margin-top:3px;}
+
+  form#audit-form{background:var(--surface); border-radius:14px; padding:30px; display:flex; flex-direction:column; gap:16px; border:1px solid var(--line-300);}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:0.76rem; font-weight:600; letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-700);}
+  .field input, .field select, .field textarea{
+    font-family:'IBM Plex Sans'; font-size:0.94rem; padding:11px 13px; border-radius:7px; border:1.5px solid var(--line-300);
+    background:var(--paper-50); color:var(--ink-900); outline-offset:1px;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--accent-600);}
+  .field textarea{resize:vertical; min-height:72px;}
+  .form-foot{font-size:0.74rem; color:var(--ink-700); line-height:1.5;}
+  .form-error{font-size:0.86rem; color:var(--accent-700); line-height:1.5;}
+  .form-error[hidden]{display:none;}
+  .btn:disabled{opacity:0.6; cursor:wait;}
+  .form-success{display:none; flex-direction:column; align-items:flex-start; gap:12px; padding:36px 30px; background:var(--surface); border:1px solid var(--line-300); border-radius:14px;}
+  .form-success svg{width:34px; height:34px; color:var(--teal-600);}
+  .form-success h3{font-size:1.2rem; text-transform:none; letter-spacing:0; font-family:'IBM Plex Sans';}
+  .form-success p{color:var(--ink-700); font-size:0.92rem;}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line-300); padding:64px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px;}
+  .footer-brand .brand{margin-bottom:14px;}
+  .footer-brand p{font-size:0.88rem; color:var(--ink-700); max-width:30ch; line-height:1.6;}
+  .footer-col h4{font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-700); font-weight:600; margin-bottom:16px;}
+  .footer-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .footer-col ul a{font-size:0.88rem; color:var(--ink-900);}
+  .footer-col ul a:hover{color:var(--accent-600);}
+  .footer-contact p{font-size:0.88rem; color:var(--ink-900); margin-bottom:6px;}
+  .social-row{display:flex; gap:12px; margin-top:16px;}
+  .social-row a{width:34px; height:34px; border:1.5px solid var(--line-300); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--ink-700);}
+  .social-row a:hover{border-color:var(--accent-600); color:var(--accent-600);}
+  .social-row svg{width:16px; height:16px;}
+  .footer-bottom{margin-top:48px; padding-top:24px; border-top:1px solid var(--line-200); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.78rem; color:var(--ink-700);}
+  .footer-bottom a{color:var(--ink-700);}
+  .footer-bottom a:hover{color:var(--accent-600);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px){
+    .hero-grid, .cta-grid{grid-template-columns:1fr; gap:40px;}
+    .service-grid, .pricing-grid{grid-template-columns:repeat(2,1fr);}
+    .process-row{grid-template-columns:repeat(2,1fr); row-gap:36px;}
+    .process-step:nth-child(2)::after{display:none;}
+    .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
+    .stats-band .wrap{grid-template-columns:repeat(2,1fr); row-gap:28px;}
+  }
+  @media (max-width: 720px){
+    nav.primary-nav{position:fixed; inset:72px 0 0 0; background:var(--paper-50); flex-direction:column; align-items:flex-start; padding:28px; gap:22px; transform:translateX(100%); transition:transform .25s ease; border-top:1px solid var(--line-300);}
+    nav.primary-nav.is-open{transform:translateX(0);}
+    nav.primary-nav a{font-size:1.1rem;}
+    .menu-toggle{display:flex;}
+    .header-actions .btn-accent.header-cta{display:none;}
+    .form-row{grid-template-columns:1fr;}
+    .service-grid, .pricing-grid{grid-template-columns:1fr;}
+    .section{padding:64px 0;}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="30" height="30" rx="6" fill="var(--ink-900)"/>
+        <path d="M6 17h4l2.5-6 4 11 2.5-7h7" stroke="var(--accent-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>The Health<br>Marketing Group</span>
+    </a>
+    <nav class="primary-nav" id="primary-nav">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-accent header-cta" href="#audit">Get a Free Audit</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1 4h16M1 9h16M1 14h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- TRIAL PROMO -->
+  <section class="trial-band" id="trial">
+    <div class="wrap trial-grid">
+      <div class="trial-copy">
+        <span class="eyebrow">Limited Trial Program</span>
+        <h2>Now accepting select clients for a free trial.</h2>
+        <p>Test our services at no cost before you decide on a longer engagement. Trial spots are exclusive and limited to a select group of clients.</p>
+      </div>
+      <div class="trial-offer">
+        <span class="trial-price">Free trial · Exclusive spots</span>
+        <a class="btn btn-accent" href="#audit" data-interest="Free trial">Claim a Trial Spot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Marketing for Independent Providers</span>
+        <h1 class="hero-head">More patients.<br>Measured, not <span class="accent">guessed.</span></h1>
+        <p class="hero-sub">The Health Marketing Group runs acquisition, SEO, reputation and brand programs built specifically for independent physician practices, dental groups and physical therapy clinics — and reports results in patients booked, not impressions served.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-accent" href="#audit">Get a Free Marketing Audit</a>
+          <a class="btn btn-ghost" href="#credibility">Why Trust a New Agency</a>
+        </div>
+        <p class="hero-note">No cost, no obligation — audits typically delivered in 5 business days.</p>
+
+        <div class="trust-strip">
+          <p>Who we work with</p>
+          <div class="trust-row">
+            <span>Independent Physician Practices</span>
+            <span>Dental Groups</span>
+            <span>Physical Therapy Clinics</span>
+            <span>Chiropractic Practices</span>
+            <span>Other Independent Providers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vitals-card">
+        <div class="vitals-head">
+          <span>Sample Reporting Dashboard</span>
+          <strong>Preview</strong>
+        </div>
+        <div class="ekg-wrap">
+          <svg viewBox="0 0 400 90" width="100%" height="90" preserveAspectRatio="none">
+            <path class="ekg-path" d="M0,45 L40,45 L52,45 L58,20 L66,70 L74,10 L82,55 L90,45 L130,45 L142,45 L148,22 L156,68 L164,14 L172,52 L180,45 L400,45"/>
+          </svg>
+        </div>
+        <div class="vitals-metrics">
+          <div class="vitals-metric">
+            <strong class="mono" data-count="86">0</strong>
+            <span>New patient inquiries this month</span>
+          </div>
+          <div class="vitals-metric">
+            <strong class="mono" data-count="24" data-suffix="%">0%</strong>
+            <span>Lower cost per inquiry vs. search ads alone</span>
+          </div>
+          <div class="vitals-metric">
+            <strong class="mono" data-count="14" data-suffix=" days">0</strong>
+            <span>Avg. time to first measurable result</span>
+          </div>
+          <div class="vitals-metric">
+            <strong class="mono">Weekly</strong>
+            <span>Reporting cadence — not quarterly surprises</span>
+          </div>
+        </div>
+        <p class="vitals-foot">Example dashboard with illustrative numbers for a typical solo or small-group practice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">About Us</span>
+        <h2>Built for independent practices, not hospital systems.</h2>
+      </div>
+      <div class="about-body">
+        <p>The Health Marketing Group was founded on one idea: independent healthcare providers deserve marketing built specifically for how they operate — not a scaled-down version of what agencies sell to hospital systems and health networks.</p>
+        <p>We work exclusively with independent physician practices, dental groups, physical therapy clinics and similar providers. That focus means every strategy, report and recommendation is built around your reality — a lean team, a referral-driven reputation, and patients who choose you one appointment at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section class="stats-band">
+    <div class="wrap">
+      <div class="stat-tile">
+        <strong class="mono">100%</strong>
+        <span>Focus on independent providers — no hospital systems, no distractions</span>
+      </div>
+      <div class="stat-tile">
+        <strong class="mono">60-Day</strong>
+        <span>Initial term, then month-to-month — no long-term lock-in</span>
+      </div>
+      <div class="stat-tile">
+        <strong class="mono">5-Day</strong>
+        <span>Turnaround on your free marketing audit</span>
+      </div>
+      <div class="stat-tile">
+        <strong class="mono">1-on-1</strong>
+        <span>Direct access to your strategist, not a rotating account team</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What We Do</span>
+        <h2>Full-funnel marketing, run by people who understand healthcare.</h2>
+        <p>Six disciplines, one accountable team — built around HIPAA-aware workflows and the realities of running an independent practice.</p>
+      </div>
+      <div class="service-grid">
+
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M3 17l5-5 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Patient Acquisition Campaigns</h3>
+          <p>Paid search, paid social and display built around appointment bookings and call tracking — not clicks.</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h3>Local &amp; Multi-Location SEO</h3>
+          <p>Google Business Profile management, map-pack visibility and location pages that scale across every site.</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3l1.9 4.6 5 .4-3.8 3.3 1.2 4.9L12 13.8 7.7 16.2l1.2-4.9L5.1 8l5-.4L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <h3>Reputation &amp; Review Management</h3>
+          <p>Automated review requests, response workflows and sentiment reporting across every provider and site.</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.8"/></svg>
+          <h3>Websites &amp; Conversion Design</h3>
+          <p>Booking-first landing pages and site rebuilds, tested against real scheduling and call-conversion data.</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0114-5.3M20 12a8 8 0 01-14 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18 3v4h-4M6 21v-4h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Marketing Automation &amp; CRM</h3>
+          <p>Recall campaigns, intake nurture and no-show win-back sequences wired into the tools your front desk uses.</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <h3>Brand &amp; Provider Positioning</h3>
+          <p>Physician branding, content and PR that build referral trust alongside your paid and organic channels.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section-alt" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How It Works</span>
+        <h2>Four stages. One accountable roadmap.</h2>
+        <p>The same engagement sequence for a solo practice or a growing multi-location group — scoped differently, run the same way.</p>
+      </div>
+      <div class="process-row">
+        <div class="process-step">
+          <span class="process-num mono">01 / AUDIT</span>
+          <h3>Audit</h3>
+          <p>We map your current channels, spend and patient journey against your real booking data.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num mono">02 / STRATEGY</span>
+          <h3>Strategy</h3>
+          <p>A channel plan and 90-day roadmap tied to patient volume and cost-per-acquisition targets.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num mono">03 / LAUNCH</span>
+          <h3>Launch</h3>
+          <p>Campaigns, pages and tracking go live with your front-desk and EHR workflows, not around them.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num mono">04 / OPTIMIZE</span>
+          <h3>Optimize</h3>
+          <p>Monthly reporting on leads, bookings and CPA — with changes made against the data, not the calendar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY -->
+  <section class="section section-alt" id="credibility">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why Us</span>
+        <h2>New agency. Specialist focus.</h2>
+        <p>We're a new agency, so we'll be straightforward about what that means: no decade of case studies yet — but a sharp focus on independent healthcare providers, and the hands-on attention that comes from being small.</p>
+      </div>
+
+      <div class="credibility-grid">
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h3>Independent-practice specialists</h3>
+          <p>We only work with independent physician practices, dental groups, physical therapy clinics and similar providers — not hospital systems, not unrelated industries.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M8 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h3>Transparent reporting</h3>
+          <p>You get direct access to the same dashboard we use — every lead, every dollar, every month. No black box, no quarterly surprises.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3v6M12 15v6M4.2 7l5.2 3M14.6 14l5.2 3M4.2 17l5.2-3M14.6 10l5.2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h3>No long-term lock-in</h3>
+          <p>Engagements run month-to-month after an initial 60-day setup period. We earn the right to keep your business every month, not just at signing.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h3>Direct strategist access</h3>
+          <p>You work directly with the person running your account — not a rotating junior team or an account manager relaying messages.</p>
+        </div>
+      </div>
+
+      <div class="founder-card">
+        <div class="founder-avatar">JM</div>
+        <div class="founder-info">
+          <h3>Founder-led, from day one</h3>
+          <p>Founder &amp; Principal Strategist — background in healthcare digital marketing, now applied full-time to independent practices. While we're building our founding client roster, every account gets direct founder involvement — not a handoff to junior staff.</p>
+        </div>
+      </div>
+
+      <div class="cohort-banner">
+        <div>
+          <h3>Taking on our founding clients.</h3>
+          <p>We're accepting a limited number of founding practices this quarter. Each gets extra strategy time and a reduced setup fee in exchange for an honest testimonial once we've delivered results.</p>
+        </div>
+        <a class="btn btn-accent btn-sm" href="#audit" data-interest="Founding client">Claim a Founding Spot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Engagements</span>
+        <h2>Pick a starting point.</h2>
+        <p>Every engagement starts with the audit — these are the ongoing programs it typically leads to.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="price-top">
+            <span class="tier mono">Starter</span>
+            <h3>Solo Practice</h3>
+            <p class="price-amount">$1,800<small> / mo</small></p>
+          </div>
+          <p class="price-desc">For one provider establishing a reliable, trackable new-patient engine.</p>
+          <ul class="price-feats">
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Local SEO &amp; Google Business Profile</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Review &amp; reputation management</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly performance reporting</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#audit">Start with an Audit</a>
+        </div>
+
+        <div class="price-card is-featured">
+          <div class="price-top">
+            <span class="tier mono">Growth</span>
+            <h3>Small Group Practice</h3>
+            <p class="price-amount">$4,200<small> / mo</small></p>
+          </div>
+          <p class="price-desc">For 2–5 providers or locations ready to add paid acquisition and a real website.</p>
+          <ul class="price-feats">
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter, per location</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Paid search &amp; social acquisition campaigns</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Booking-first website &amp; landing pages</li>
+          </ul>
+          <a class="btn btn-accent btn-block" href="#audit">Start with an Audit</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-top">
+            <span class="tier mono">Established</span>
+            <h3>Multi-Location Group</h3>
+            <p class="price-amount">$8,500<small> / mo</small></p>
+          </div>
+          <p class="price-desc">For 6–15 independent locations needing one funnel, one dashboard, consistent execution.</p>
+          <ul class="price-feats">
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Growth, system-wide</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Marketing automation &amp; CRM build-out</li>
+            <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rolled-up, multi-location reporting dashboard</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#audit">Start with an Audit</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Before you reach out.</h2>
+      </div>
+      <div class="faq-list" id="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is your marketing HIPAA-compliant?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes — campaigns, forms and tracking are built around HIPAA-aware data handling, including BAA-covered tooling where patient information is involved.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How fast will we see results?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Most clients see measurable lead movement within the first 30 days, with cost-per-acquisition stabilizing by month three as campaigns learn.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Do you work with solo and single-location practices?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes — our Starter tier is built specifically for solo providers and single-location practices that need a reliable acquisition engine without an in-house team.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What does the free audit include?<span class="plus">+</span></button>
+          <div class="faq-a"><p>A full review of your current channels, spend, website conversion and local visibility, delivered as a written report with prioritized recommendations.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is there a minimum contract length?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Engagements run month-to-month after an initial 60-day setup period, which is how long most channels need to reach a stable baseline.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">You're a new agency — why should we trust you?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Fair question. We don't have a decade of case studies yet, so we lean on what we can control: a narrow specialization in independent practices, full transparency into your own reporting dashboard, no long-term contract, and direct access to the founder on every account — not a junior team learning on your budget.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / LEAD FORM -->
+  <section class="cta-band" id="audit">
+    <div class="wrap cta-grid">
+      <div>
+        <span class="eyebrow">Start Here</span>
+        <h2>Get a free marketing audit.</h2>
+        <p>Tell us about your organization. We'll reply within one business day with next steps for your written audit.</p>
+        <div class="cta-bullets">
+          <div><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>No cost, no obligation</div>
+          <div><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivered as a written report in ~5 business days</div>
+          <div><svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Built around your real booking &amp; call data</div>
+        </div>
+      </div>
+
+      <div>
+        <form id="audit-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="a33a395e-bce6-4f76-9854-1dd902009479">
+          <input type="hidden" name="subject" value="New lead from The Health Marketing Group website">
+          <input type="hidden" name="from_name" value="The Health Marketing Group website">
+          <input type="hidden" name="interest" id="f-interest" value="Free marketing audit">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Full name</label>
+              <input id="f-name" name="name" type="text" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-email">Work email</label>
+              <input id="f-email" name="email" type="email" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-org">Organization</label>
+              <input id="f-org" name="org" type="text" required autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-locations"># of locations</label>
+              <select id="f-locations" name="locations">
+                <option value="1">1 (single location)</option>
+                <option value="2-5">2–5</option>
+                <option value="6-15">6–15</option>
+                <option value="16+">16+</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-message">What are you hoping to improve?</label>
+            <textarea id="f-message" name="message" placeholder="e.g. More booked appointments from our website, lower cost per lead, better review volume..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent btn-block" id="audit-submit">Request My Free Audit</button>
+          <p class="form-error" id="form-error" role="alert" hidden>Something went wrong sending your request. Please try again, or email hello@healthmarketinggroup.example directly.</p>
+          <p class="form-foot">By submitting, you agree to be contacted by The Health Marketing Group about your audit. We don't sell your information.</p>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Request received.</h3>
+          <p>Thanks — a strategist will reach out within one business day to confirm details before we start your audit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="30" height="30" rx="6" fill="var(--ink-900)"/>
+            <path d="M6 17h4l2.5-6 4 11 2.5-7h7" stroke="var(--accent-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>The Health<br>Marketing Group</span>
+        </div>
+        <p>A marketing agency for independent physician practices, dental groups, and physical therapy clinics — building patient-acquisition engines built for how you actually operate.</p>
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 11v5M8 8.5v.01M12 16v-3.2c0-1.5 1-2.3 2-2.3s2 .8 2 2.3V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Patient Acquisition</a></li>
+          <li><a href="#services">Local &amp; Multi-Location SEO</a></li>
+          <li><a href="#services">Reputation Management</a></li>
+          <li><a href="#services">Websites &amp; CRO</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Get in Touch</h4>
+        <p>hello@healthmarketinggroup.example</p>
+        <p>(555) 014-2290</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Health Marketing Group. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">HIPAA Notice</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header shadow on scroll
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+  }, {passive:true});
+
+  // mobile nav
+  var toggle = document.getElementById('menu-toggle');
+  var nav = document.getElementById('primary-nav');
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // faq accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    btn.addEventListener('click', function(){
+      var isOpen = item.getAttribute('data-open') === 'true';
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        other.setAttribute('data-open', 'false');
+        other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.setAttribute('data-open', 'true');
+        btn.setAttribute('aria-expanded', 'true');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // animated count-up, respecting reduced motion
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var counters = document.querySelectorAll('[data-count]');
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var isDecimal = String(target).indexOf('.') !== -1;
+    if(reduceMotion){
+      el.textContent = target + suffix;
+      return;
+    }
+    var start = 0;
+    var duration = 1100;
+    var startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var value = start + (target - start) * progress;
+      el.textContent = (isDecimal ? value.toFixed(1) : Math.round(value)) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.4});
+    counters.forEach(function(c){ obs.observe(c); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  // lead form: sends to Web3Forms, which emails each submission
+  var form = document.getElementById('audit-form');
+  var success = document.getElementById('form-success');
+  var submitBtn = document.getElementById('audit-submit');
+  var errorMsg = document.getElementById('form-error');
+  var interestField = document.getElementById('f-interest');
+  var defaultLabel = submitBtn.textContent;
+
+  document.querySelectorAll('[data-interest]').forEach(function(link){
+    link.addEventListener('click', function(){
+      interestField.value = link.getAttribute('data-interest');
+    });
+  });
+  document.querySelectorAll('a[href="#audit"]:not([data-interest])').forEach(function(link){
+    link.addEventListener('click', function(){
+      interestField.value = 'Free marketing audit';
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    errorMsg.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+    })
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        if(!data.success) throw new Error(data.message || 'Submission failed');
+        form.style.display = 'none';
+        success.style.display = 'flex';
+        success.setAttribute('tabindex', '-1');
+        success.focus();
+      })
+      .catch(function(){
+        errorMsg.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = defaultLabel;
+      });
+  });
+</script>
+</body>
+</html>
